@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-profile
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: user-profile
+  template:
+    metadata:
+      labels:
+        app: user-profile
+    spec:
+      containers:
+      - name: user-profile
+        image: user-profile:latest
+        ports:
+        - containerPort: 5004
+        env:
+        - name: MONGO_URI
+          value: "mongodb://mongodb:27017/ecommerce"
+        - name: SECRET_KEY
+          valueFrom:
+            secretKeyRef:
+              name: user-profile-secret
+              key: secret-key
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: user-profile
+spec:
+  selector:
+    app: user-profile
+  ports:
+  - port: 5004
+    targetPort: 5004
+  type: ClusterIP

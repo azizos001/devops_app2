@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: order-management
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: order-management
+  template:
+    metadata:
+      labels:
+        app: order-management
+    spec:
+      containers:
+      - name: order-management
+        image: order-management:latest
+        ports:
+        - containerPort: 5003
+        env:
+        - name: MONGO_URI
+          value: "mongodb://mongodb:27017/ecommerce"
+        - name: STOCK_SERVICE_URL
+          value: "http://stock-manager:5002"
+        - name: PRODUCT_SERVICE_URL
+          value: "http://product-catalogue:5001"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: order-management
+spec:
+  selector:
+    app: order-management
+  ports:
+  - port: 5003
+    targetPort: 5003
+  type: ClusterIP
