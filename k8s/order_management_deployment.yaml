@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: order-management
-        image: 7abouba/order-management:latest
+        image: 7abouba/ordermanagement:latest
         ports:
         - containerPort: 5003
         env:
