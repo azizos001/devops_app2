@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: user-profile
-        image: user-profile:latest
+        image: 7abouba/user-profile:latest
         ports:
         - containerPort: 5004
         env:
