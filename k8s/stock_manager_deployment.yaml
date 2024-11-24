@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: stock-manager
-        image: 7abouba/stock-manager:latest
+        image: 7abouba/stockmanager:latest
         ports:
         - containerPort: 5002
         env:
