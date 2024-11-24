@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: product-catalogue
-        image: product-catalogue:latest
+        image: 7abouba/product-catalogue:latest
         ports:
         - containerPort: 5001
         env:
