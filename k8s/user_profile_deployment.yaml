@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: user-profile
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: user-profile
@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: user-profile
-        image: 7abouba/userprofile:latest
+        image: stoufaa/userprofile:latest
         ports:
         - containerPort: 5004
         env:
