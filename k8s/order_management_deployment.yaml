@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: order-management
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: order-management
@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: order-management
-        image: 7abouba/ordermanagement:latest
+        image: stoufaa/ordermanagement:latest
         ports:
         - containerPort: 5003
         env:
